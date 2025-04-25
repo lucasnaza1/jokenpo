@@ -17,26 +17,45 @@ function jogar(escolhaJogador) {
 
   // Verificar resultado
   if (escolhaJogador == escolhaComputador) {
-    resultadoElement.innerHTML =
-      "<span style='color: #FFD700; font-size: 24px;'>EMPATE!</span>";
+    resultadoElement.innerHTML = "EMPATE!";
+    resultadoElement.className = "result draw";
   } else if (
     (escolhaJogador == 1 && escolhaComputador == 3) ||
     (escolhaJogador == 2 && escolhaComputador == 1) ||
     (escolhaJogador == 3 && escolhaComputador == 2)
   ) {
-    resultadoElement.innerHTML = `<span style='color: #00FF00; font-size: 24px;'>VOCÊ VENCEU! ${nomes[escolhaJogador]} vence ${nomes[escolhaComputador]}</span>`;
+    resultadoElement.innerHTML = `VOCÊ VENCEU!<br>${nomes[escolhaJogador]} vence ${nomes[escolhaComputador]}`;
+    resultadoElement.className = "result win";
   } else {
-    resultadoElement.innerHTML = `<span style='color: #FF0000; font-size: 24px;'>COMPUTADOR VENCEU! ${nomes[escolhaComputador]} vence ${nomes[escolhaJogador]}</span>`;
+    resultadoElement.innerHTML = `COMPUTADOR VENCEU!<br>${nomes[escolhaComputador]} vence ${nomes[escolhaJogador]}`;
+    resultadoElement.className = "result lose";
   }
 
   // Esconder opções e mostrar botão de reinício
   opcoesJogo.style.display = "none";
-  btnReiniciar.style.display = "inline-block";
+  btnReiniciar.style.display = "block";
+
+  // Efeito de animação
+  resultadoElement.style.animation = "none";
+  setTimeout(() => {
+    resultadoElement.style.animation = "fadeIn 0.5s ease-out";
+  }, 10);
 }
 
 function reiniciarJogo() {
   document.getElementById("resultado").textContent = "";
+  document.getElementById("resultado").className = "result";
   document.getElementById("escolha-computador").textContent = "";
-  document.getElementById("opcoes-jogo").style.display = "block";
+  document.getElementById("opcoes-jogo").style.display = "flex";
   document.getElementById("btn-reiniciar").style.display = "none";
 }
+
+// Adiciona animação de fadeIn
+const style = document.createElement("style");
+style.textContent = `
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+`;
+document.head.appendChild(style);

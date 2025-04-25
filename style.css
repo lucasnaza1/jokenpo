@@ -1,89 +1,176 @@
-/* Global Styles */
+/* Reset e Estilos Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #121212;
-  background-image: radial-gradient(
-      circle at 25% 25%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 75% 75%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 20%
-    );
-  background-size: 50px 50px;
-  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* Logo Styles */
-.logo {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  max-width: 150px;
-  width: auto;
-}
-
-/* Container with the background image */
-.container {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  padding: 2rem;
-  backdrop-filter: blur(5px);
+/* Container do Jogo */
+.game-container {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  max-width: 600px;
-  margin: 2rem auto;
 }
 
-/* Content div for text and button */
-.content {
+header {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px 40px;
-  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
-.content h2 {
-  margin-bottom: 20px;
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff4757;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Button Styles */
+.subtitle {
+  font-size: 1.2rem;
+  color: #ddd;
+}
 
-button {
-  background-color: #ff4757;
+/* Área de Jogo */
+.game-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: all 0.3s ease;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.choice-btn:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-#btn-reiniciar {
-  display: none; /* Inicialmente escondido */
-  margin-top: 20px;
-  padding: 12px 25px;
-  background-color: #4caf50;
+.choice-btn .emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Resultados */
+.result-container {
+  text-align: center;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.result {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.computer-choice {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+/* Botão Reiniciar */
+.restart-btn {
+  background: #4caf50;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
+  display: none;
+  margin-top: 20px;
 }
 
-#btn-reiniciar:hover {
-  background-color: #45a049;
+.restart-btn:hover {
+  background: #45a049;
   transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.opcoes button {
-  font-size: 18px;
-  padding: 12px 20px;
-  margin: 0 10px;
-}
-/* Footer Styles */
-footer {
+/* Rodapé */
+.game-footer {
+  margin-top: 30px;
   text-align: center;
-  padding: 10px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Efeitos de Vitória/Derrota */
+.win {
+  color: #4caf50;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.lose {
+  color: #ff4757;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.draw {
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .choices {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .choice-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
 }

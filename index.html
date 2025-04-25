@@ -3,27 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JOKENPO!!!</title>
+    <title>JOKENPÔ - Pedra, Papel e Tesoura</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <div class="content">
-        <h2>Vamos la!! Hora de jogar!!!!</h2>
-        <p>JOOO...KEEEN...PO!!!!</p>
-        <div class="opcoes">
-          <button onclick="jogar(1)">Pedra</button>
-          <button onclick="jogar(2)">Papel</button>
-          <button onclick="jogar(3)">Tesoura</button>
+    <div class="game-container">
+      <header>
+        <h1>JOKENPÔ</h1>
+        <p class="subtitle">Pedra, Papel e Tesoura</p>
+      </header>
+
+      <div class="game-area">
+        <div class="choices" id="opcoes-jogo">
+          <button class="choice-btn" onclick="jogar(1)" data-choice="pedra">
+            <span class="emoji">👊</span>
+            <span>Pedra</span>
+          </button>
+          <button class="choice-btn" onclick="jogar(2)" data-choice="papel">
+            <span class="emoji">✋</span>
+            <span>Papel</span>
+          </button>
+          <button class="choice-btn" onclick="jogar(3)" data-choice="tesoura">
+            <span class="emoji">✌️</span>
+            <span>Tesoura</span>
+          </button>
         </div>
-        <div id="resultado"></div>
-        <div id="escolha-computador"></div>
-        <button id="btn-reiniciar" onclick="reiniciarJogo()">
-          Jogar Novamente
-        </button>
+
+        <div class="result-container">
+          <div id="resultado" class="result"></div>
+          <div id="escolha-computador" class="computer-choice"></div>
+          <button
+            id="btn-reiniciar"
+            class="restart-btn"
+            onclick="reiniciarJogo()"
+          >
+            Jogar Novamente
+          </button>
+        </div>
       </div>
     </div>
+
+    <footer class="game-footer">
+      <p>Desenvolvido por nazadev</p>
+    </footer>
+
+    <script src="app.js"></script>
   </body>
-  <footer>nazadev</footer>
-  <script src="app.js"></script>
 </html>
