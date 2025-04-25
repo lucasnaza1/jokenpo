@@ -1,46 +1,31 @@
-let idade = parseInt(prompt("Digite sua idade: "));
-if (idade < 18) {
-  alert("Jogo permitido para maiores de idade");
-}
+function jogar(escolhaJogador) {
+  const escolhaComputador = Math.floor(Math.random() * 3) + 1;
+  const resultadoElement = document.getElementById("resultado");
+  const escolhaCompElement = document.getElementById("escolha-computador");
 
-if (idade >= 18) {
-  escolhaJogador = prompt("1-Pedra, 2-papel ou 3-tesoura");
-  escolhaComputador = Math.floor(Math.random() * 3) + 1;
+  // Converter números para nomes
+  const nomes = {
+    1: "Pedra",
+    2: "Papel",
+    3: "Tesoura",
+  };
 
-  //Jogador e Computador escolhem a mesma opção ---> EMPATE!!!!!
+  // Mostrar escolha do computador
+  escolhaCompElement.textContent = `O computador escolheu: ${nomes[escolhaComputador]}`;
+
+  // Verificar resultado
   if (escolhaJogador == escolhaComputador) {
-    alert("EMPATE!");
+    resultadoElement.textContent = "EMPATE!";
+    resultadoElement.style.color = "yellow";
+  } else if (
+    (escolhaJogador == 1 && escolhaComputador == 3) || // Pedra > Tesoura
+    (escolhaJogador == 2 && escolhaComputador == 1) || // Papel > Pedra
+    (escolhaJogador == 3 && escolhaComputador == 2) // Tesoura > Papel
+  ) {
+    resultadoElement.textContent = `Você venceu! ${nomes[escolhaJogador]} vence ${nomes[escolhaComputador]}`;
+    resultadoElement.style.color = "green";
+  } else {
+    resultadoElement.textContent = `Computador venceu! ${nomes[escolhaComputador]} vence ${nomes[escolhaJogador]}`;
+    resultadoElement.style.color = "red";
   }
-
-  if (escolhaJogador == 1) {
-    /*Pedra*/ if (escolhaComputador == 3) {
-      //Jogador escolhe pedra, computador escolhe tesoura ---> jogador vence!!!!!
-      alert("O Jogador venceu, computador tesoura!!");
-    }
-    //Jogador escolhe pedra, computador escolhe papel ---> computador vence!!!!!
-    if (escolhaComputador == 2) {
-      alert("O computador venceu, computador papel");
-    }
-  }
-  if (escolhaJogador == 2) {
-    /*Papel*/ //Jogador escolhe tesoura, computador escolhe pedra ---> computador vence!!!!!
-    if (escolhaComputador == 1) {
-      alert("Jogador venceu, computador pedra");
-    }
-    if (escolhaComputador == 3) {
-      //Jogador escolhe tesoura, computador escolhe papel ---> computador vence!!!!!
-      alert("Computador venceu, computador tesoura");
-    }
-  }
-  if (escolhaJogador == 3) {
-    /*Tesoura*/ if (escolhaComputador == 2) {
-      //Jogador escolhe papel, computador escolhe pedra ---> computador vence!!!!!
-      alert("Computador venceu, computador pedra");
-    }
-    if (escolhaComputador == 3) {
-      //Jogador escolhe papel, computador escolhe tesoura ---> computador vence!!!!!
-      alert("Jogador venceu, computador papel");
-    }
-  }
-  alert("A escolha do computador foi " + escolhaComputador);
 }
